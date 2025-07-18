@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🐶🐱 Dog vs Cat Classifier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #222;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .container {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      padding: 40px 50px;
+      width: 380px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 25px;
+      color: #3a86ff;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    input[type="file"] {
+      padding: 12px;
+      border: 2px dashed #3a86ff;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      font-size: 14px;
+    }
+    input[type="file"]:hover {
+      border-color: #023e8a;
+    }
+    button {
+      background-color: #3a86ff;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(58, 134, 255, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background-color: #023e8a;
+      box-shadow: 0 12px 20px rgba(2, 62, 138, 0.6);
+    }
+    .result {
+      margin-top: 35px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #e0f7fa;
+      box-shadow: 0 10px 30px rgba(0, 150, 136, 0.2);
+      color: #00796b;
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+    .result img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🐶🐱 Dog vs Cat Classifier</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*" required />
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if filename and prediction %}
+    <div class="result">
+      Prediction: <span>{{ prediction }}</span>
+      <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" />
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
