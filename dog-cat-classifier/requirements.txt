@@ -1,4 +1,6 @@
-tensorflow
+setuptools>=65.5.1
+wheel
+tensorflow==2.20.0
 numpy==1.23.5
 matplotlib==3.7.1
 pillow==9.4.0
